@@ -55,9 +55,9 @@
 
     const _window = window['unsafeWindow'] || window
 
-    _window.require = window.require
-    _window.requirejs = window.requirejs
-    _window.define = window.define
+    _window.require = require
+    _window.requirejs = requirejs
+    _window.define = define
 
     main(_window)
 })();
