@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name                xhri
 // @description         xhri
-// @version             0.0.4
+// @version             0.0.5
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
 // @include             /us=xhri/
-// @require             https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js
 // @require             https://unpkg.com/requirejs@2.3.6/require.js
 // @icon                https://alchemy-works.github.io/favicon.ico
 // @license             MIT
@@ -31,7 +30,7 @@
             baseUrl,
             waitSeconds: 30,
             urlArgs: 'bust=' + new Date().getTime(),
-            enforceDefine: true,
+            enforceDefine: false,
             paths: {
                 'immer': ss`https://unpkg.com/immer@9.0.6/dist/immer.umd.production.min.js`,
                 '@emotion/css': ss`https://unpkg.com/@emotion/css@11.1.3/dist/emotion-css.umd.min.js`,
@@ -42,7 +41,12 @@
             },
         })
 
-        window.require(['react', 'react-dom', './App'], (
+        window.require([
+            'react',
+            'react-dom',
+            './App',
+            'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js',
+        ], (
             { createElement },
             { render },
             App,
@@ -55,7 +59,6 @@
 
     const _window = window['unsafeWindow'] || window
 
-    _window.ah = ah
     _window.require = require
     _window.requirejs = requirejs
     _window.define = define
