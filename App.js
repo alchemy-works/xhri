@@ -9,7 +9,8 @@ define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModa
     const _ExtensionApp = css`
       position: fixed;
       right: 20px;
-      top: 20px;
+      top: 100px;
+
       .icon-button {
         font-size: 3rem;
         cursor: pointer;
@@ -18,6 +19,7 @@ define(['./html', 'react', '@emotion/css', './antd', './store', './ExtensionModa
         border-radius: 4px;
         transition: all 200ms ease-in-out;
         will-change: transform;
+
         :hover {
           background-color: #1890FF;
           color: #fff;
