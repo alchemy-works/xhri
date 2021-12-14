@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                xhri
 // @description         xhri
-// @version             0.0.2
+// @version             0.0.3
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
 // @include             /us=xhri/
