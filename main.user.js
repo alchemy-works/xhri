@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                xhri
 // @description         xhri
-// @version             0.0.1
+// @version             0.0.2
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
 // @include             /us=xhri/
@@ -24,10 +24,10 @@
             .trim()
     }
 
-    function main() {
-        const baseUrl = location.href.includes('localhost') ? '' : 'https://alchemy-works.github.io/xhri/'
+    function main(window) {
+        const baseUrl = window.location.href.includes('localhost') ? '' : 'https://alchemy-works.github.io/xhri/'
 
-        requirejs.config({
+        window.requirejs.config({
             baseUrl,
             waitSeconds: 30,
             urlArgs: 'bust=' + new Date().getTime(),
@@ -42,16 +42,22 @@
             },
         })
 
-        require(['react', 'react-dom', './App'], (
+        window.require(['react', 'react-dom', './App'], (
             { createElement },
             { render },
             App,
         ) => {
-            const divRef = document.createElement('div')
-            document.body.appendChild(divRef)
+            const divRef = window.document.createElement('div')
+            window.document.body.appendChild(divRef)
             render(createElement(App), divRef)
         })
     }
 
-    main()
+    const _window = window['unsafeWindow'] || window
+
+    _window.require = window.require
+    _window.requirejs = window.requirejs
+    _window.define = window.define
+
+    main(_window)
 })();
