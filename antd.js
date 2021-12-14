@@ -4,5 +4,6 @@ const antdIconsUrl = 'https://unpkg.com/@ant-design/icons@4.7.0/dist/index.umd.m
 
 define(['./loadCss', antdJsUrl, antdIconsUrl], (loadCss, antd, icons) => {
     const _ = loadCss(antdCssUrl)
+    window.__message = antd.message
     return { ...antd, ...icons, }
 })
