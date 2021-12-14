@@ -4,7 +4,7 @@
 // @version             0.0.6
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
-// @include             /us=xhri/
+// @include             /.*/
 // @require             https://unpkg.com/requirejs@2.3.6/require.js
 // @icon                https://alchemy-works.github.io/favicon.ico
 // @license             MIT
