@@ -1,7 +1,8 @@
-define(['./html', '@emotion/css', './antd'], (
+define(['./html', '@emotion/css', './antd', 'react'], (
     html,
     { css },
     { Modal, Button, Input, Space, message },
+    { useEffect },
 ) => {
 
     const _ExtensionModal = css`
@@ -29,6 +30,7 @@ define(['./html', '@emotion/css', './antd'], (
             wrapClassName: _ExtensionModal,
         }
 
+
         function handleStartProxy() {
             try {
                 new Function(props.state.script).call(window)
@@ -38,6 +40,12 @@ define(['./html', '@emotion/css', './antd'], (
                 message.error(err.message)
             }
         }
+
+        useEffect(() => {
+            if (props.state.proxyEnabled) {
+                handleStartProxy()
+            }
+        }, [])
 
         function handleStopProxy() {
             window.ah.unProxy()

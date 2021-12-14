@@ -1,4 +1,6 @@
 const SCRIPT_KEY = '_XHRI_SCRIPT'
+const PROXY_KEY = '_XHRI_PROXY'
+
 define(['immer'], ({ produce }) => {
 
     function update(state, action) {
@@ -12,12 +14,14 @@ define(['immer'], ({ produce }) => {
     function start(state) {
         return produce(state, (draft) => {
             draft.proxyEnabled = true
+            window.localStorage.setItem(PROXY_KEY, 'true')
         })
     }
 
     function stop(state) {
         return produce(state, (draft) => {
             draft.proxyEnabled = false
+            window.localStorage.setItem(PROXY_KEY, 'false')
         })
     }
 
@@ -46,7 +50,7 @@ define(['immer'], ({ produce }) => {
     return {
         initialState: {
             modalVisible: false,
-            proxyEnabled: false,
+            proxyEnabled: window.localStorage.getItem(PROXY_KEY) === 'true',
             script: window.localStorage.getItem(SCRIPT_KEY),
         },
         reducer(state, action) {
