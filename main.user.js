@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                xhri
 // @description         xhri
-// @version             0.0.3
+// @version             0.0.4
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
 // @include             /us=xhri/
@@ -55,6 +55,7 @@
 
     const _window = window['unsafeWindow'] || window
 
+    _window.ah = ah
     _window.require = require
     _window.requirejs = requirejs
     _window.define = define
