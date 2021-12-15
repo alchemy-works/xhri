@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                xhri
 // @description         xhri
-// @version             0.0.7
+// @version             0.0.8
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
 // @include             /.*/
@@ -41,12 +41,9 @@
             },
         })
 
-        window.require([
-            'react',
-            'react-dom',
-            './App',
-            'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js',
-        ], (
+        const ajaxHook = 'https://unpkg.com/ajax-hook@2.0.3/dist/ajaxhook.min.js'
+
+        window.require(['react', 'react-dom', './App', ajaxHook,], (
             { createElement },
             { render },
             App,
