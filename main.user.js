@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                xhri
 // @description         xhri
-// @version             0.0.8
+// @version             0.0.9
 // @namespace           https://github.com/alchemy-works
 // @author              Alchemy Works
 // @include             /.*/
@@ -20,7 +20,7 @@
     }
 
     function main(window) {
-        const baseUrl = window.location.href.includes('localhost') ? '' : 'https://alchemy-works.github.io/xhri/'
+        const baseUrl = window.location.hostname === 'localhost' ? '' : 'https://alchemy-works.github.io/xhri/'
 
         window.requirejs.config({
             baseUrl,
